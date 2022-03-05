@@ -1,0 +1,19 @@
+<script>
+    var Url = new URL(window.location.href);
+    var url = new URLSearchParams(Url.search);
+    if (url.has('app')){
+        var app = url.get('app');
+        if (app == 'spost'){
+            var param = url.get('param');
+            url.delete('param');
+            url.delete('app');
+            window.location.href='https://spost.loca.lt/'+param+'?'+url.toString();
+        }
+        else{
+            document.write('<pre>{"error": "App Not Found"}</pre>');
+        }
+    }
+    else{
+        document.write('<pre>{"error": "App Not specified"}</pre>')
+    }
+</script>
